@@ -1,13 +1,20 @@
 import React from 'react';
+import Loadable from 'react-loadable';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const LoadableComponent = Loadable({
+  loader: () => import(/* webpackChunkName: "SomeComponent" */ './SomeComponent'),
+  delay: 500,
+  loading: () => <p>loading...</p>,
+});
+
+const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        {typeof logo !== 'object' && <img src={logo} className="App-logo" alt="logo" />}
+        <p> 
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
@@ -18,6 +25,7 @@ function App() {
         >
           Learn React
         </a>
+        <LoadableComponent />
       </header>
     </div>
   );

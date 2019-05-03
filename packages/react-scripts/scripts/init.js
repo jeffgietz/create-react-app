@@ -99,6 +99,7 @@ module.exports = function(
     build: 'react-scripts build',
     test: 'react-scripts test',
     eject: 'react-scripts eject',
+    server: "node server/bootstrap.js"
   };
 
   // Setup the eslint config
